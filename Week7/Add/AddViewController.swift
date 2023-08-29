@@ -29,7 +29,7 @@ class AddViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //프레임워크 클래스에 접근해보기 1.
         ClassOpenExample.publicExample()
         ClassPublicExample.publicExample()
         
@@ -40,7 +40,8 @@ class AddViewController: BaseViewController {
         print(#function)
         NotificationCenter.default.addObserver(self, selector: #selector(selectImageNotificationObserver), name: .selectImage, object: nil) //object: 유저인포로 값을 전달하니까 nil
         
-        sesacShowActibityViewController(image: UIImage(systemName: "star")!, url: "hello", text: "hi")
+        //프레임워크 메서드에 접근해보기 2.
+//        sesacShowActibityViewController(image: UIImage(systemName: "star")!, url: "hello", text: "hi")
 //        sesacShowAlert(title: <#T##String#>, message: <#T##String#>, buttonTitle: <#T##String#>, buttonAction: <#T##(UIAlertAction) -> Void#>)
     }
     
@@ -85,12 +86,37 @@ class AddViewController: BaseViewController {
         
     }
     
+    @objc func titleButtonClicked() {
+        
+        let vc = TitleViewController()
+        
+        //Closure로 값 전달 (3)
+        vc.completionHandler = { title, age, push in
+            self.mainView.titleButton.setTitle(title, for: .normal)
+            print("completionHandler", age, push)
+        }
+        
+        navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
+    @objc func contentButtonClicked() {
+        let vc = ContentViewController()
+        
+        vc.completionHandler = { text in
+            self.mainView.contentButton.setTitle(text, for: .normal)
+        }
+        present(vc, animated: true)
+    }
+    
     override func configureView() { //addSubView
         super.configureView() //부모뷰 것도 호출하기
         mainView.searchButton.addTarget(self, action: #selector(searchButtonClicked), for: .touchUpInside)
         mainView.dateButton.addTarget(self, action: #selector(dateButtonClicked), for: .touchUpInside)
         mainView.SearchProtocolButton.addTarget(self, action: #selector(searchProtocolButtonClicked), for: .touchUpInside)
+        mainView.titleButton.addTarget(self, action: #selector(titleButtonClicked), for: .touchUpInside)
         print("AddVC configureView")
+        mainView.contentButton.addTarget(self, action: #selector(contentButtonClicked), for: .touchUpInside)
     }
 
     override func setConstraints() { //제약조건

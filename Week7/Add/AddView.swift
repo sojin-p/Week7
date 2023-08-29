@@ -18,7 +18,7 @@ class AddView: BaseView {
     
     let searchButton = { //노티피케이션용
         let view = UIButton()
-        view.backgroundColor = .systemMint
+        view.backgroundColor = .yellow
         return view
     }()
     
@@ -35,11 +35,27 @@ class AddView: BaseView {
         return view
     }()
     
+    let titleButton = {
+        let view = UIButton()
+        view.backgroundColor = .systemMint
+        view.setTitle("오늘의 사진", for: .normal)
+        return view
+    }()
+    
+    let contentButton = {
+        let view = UIButton()
+        view.backgroundColor = .gray
+        view.setTitle("컨텐츠", for: .normal)
+        return view
+    }()
+    
     override func configureView() {
         addSubview(photoImageView)
         addSubview(searchButton)
         addSubview(dateButton)
         addSubview(SearchProtocolButton)
+        addSubview(titleButton)
+        addSubview(contentButton)
     }
     
     override func setConstraints() {
@@ -63,6 +79,18 @@ class AddView: BaseView {
             make.horizontalEdges.equalToSuperview()
             make.height.equalTo(50)
         }
+        
+        titleButton.snp.makeConstraints { make in
+            make.top.equalTo(dateButton.snp.bottom).offset(10)
+            make.horizontalEdges.equalToSuperview()
+            make.height.equalTo(50)
+        }
+        
+        contentButton.snp.makeConstraints { make in
+            make.top.equalTo(titleButton.snp.bottom).offset(10)
+            make.horizontalEdges.bottom.equalTo(self.safeAreaLayoutGuide)
+        }
+
     }
     
 }

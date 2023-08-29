@@ -13,6 +13,9 @@
 		234BC6BB2A9D8E890062F776 /* DateFormat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234BC6BA2A9D8E890062F776 /* DateFormat+Extension.swift */; };
 		234BC6F72A9D9C740062F776 /* SeSACFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 234BC6F32A9D9C300062F776 /* SeSACFramework.framework */; };
 		234BC6F82A9D9C740062F776 /* SeSACFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 234BC6F32A9D9C300062F776 /* SeSACFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		234BC6FB2A9DB54E0062F776 /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234BC6FA2A9DB54E0062F776 /* TitleViewController.swift */; };
+		234BC6FD2A9DC20F0062F776 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234BC6FC2A9DC20F0062F776 /* ContentViewController.swift */; };
+		234BC6FF2A9DC7520062F776 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234BC6FE2A9DC7520062F776 /* WebViewController.swift */; };
 		2356E5282A9C1D52000DB64F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2356E5272A9C1D52000DB64F /* AppDelegate.swift */; };
 		2356E52A2A9C1D52000DB64F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2356E5292A9C1D52000DB64F /* SceneDelegate.swift */; };
 		2356E52C2A9C1D52000DB64F /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2356E52B2A9C1D52000DB64F /* AddViewController.swift */; };
@@ -65,6 +68,9 @@
 		234BC6B82A9D7DB60062F776 /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
 		234BC6BA2A9D8E890062F776 /* DateFormat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormat+Extension.swift"; sourceTree = "<group>"; };
 		234BC6ED2A9D9C300062F776 /* SeSACFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SeSACFramework.xcodeproj; path = ../SeSACFramework/SeSACFramework.xcodeproj; sourceTree = "<group>"; };
+		234BC6FA2A9DB54E0062F776 /* TitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewController.swift; sourceTree = "<group>"; };
+		234BC6FC2A9DC20F0062F776 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
+		234BC6FE2A9DC7520062F776 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		2356E5242A9C1D52000DB64F /* Week7.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Week7.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2356E5272A9C1D52000DB64F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2356E5292A9C1D52000DB64F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +152,7 @@
 				2356E53E2A9C23E7000DB64F /* Base */,
 				2356E5272A9C1D52000DB64F /* AppDelegate.swift */,
 				2356E5292A9C1D52000DB64F /* SceneDelegate.swift */,
+				234BC6FE2A9DC7520062F776 /* WebViewController.swift */,
 				2356E5302A9C1D56000DB64F /* Assets.xcassets */,
 				2356E5322A9C1D56000DB64F /* LaunchScreen.storyboard */,
 				2356E5352A9C1D56000DB64F /* Info.plist */,
@@ -180,6 +187,8 @@
 				2356E5472A9C2FF1000DB64F /* AddView.swift */,
 				234BC6B62A9D7C780062F776 /* DateView.swift */,
 				234BC6B82A9D7DB60062F776 /* DateViewController.swift */,
+				234BC6FA2A9DB54E0062F776 /* TitleViewController.swift */,
+				234BC6FC2A9DC20F0062F776 /* ContentViewController.swift */,
 			);
 			path = Add;
 			sourceTree = "<group>";
@@ -284,6 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				234BC6FD2A9DC20F0062F776 /* ContentViewController.swift in Sources */,
 				234BC6B52A9D7BDE0062F776 /* Notification+Extension.swift in Sources */,
 				2356E5482A9C2FF1000DB64F /* AddView.swift in Sources */,
 				2356E5432A9C274C000DB64F /* SearchViewController.swift in Sources */,
@@ -295,9 +305,11 @@
 				234BC6B72A9D7C780062F776 /* DateView.swift in Sources */,
 				2356E5402A9C2424000DB64F /* BaseViewController.swift in Sources */,
 				2356E54A2A9C3371000DB64F /* SearchView.swift in Sources */,
+				234BC6FF2A9DC7520062F776 /* WebViewController.swift in Sources */,
 				2356E5452A9C2EB6000DB64F /* BaseView.swift in Sources */,
 				2356E5282A9C1D52000DB64F /* AppDelegate.swift in Sources */,
 				2356E52A2A9C1D52000DB64F /* SceneDelegate.swift in Sources */,
+				234BC6FB2A9DB54E0062F776 /* TitleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
