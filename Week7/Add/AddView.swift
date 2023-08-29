@@ -16,15 +16,30 @@ class AddView: BaseView {
         return view
     }()
     
-    let searchButton = {
+    let searchButton = { //노티피케이션용
         let view = UIButton()
         view.backgroundColor = .systemMint
+        return view
+    }()
+    
+    let SearchProtocolButton = { //프로토콜용
+        let view = UIButton()
+        view.backgroundColor = .systemPink
+        return view
+    }()
+    
+    let dateButton = {
+        let view = UIButton()
+        view.backgroundColor = .blue
+        view.setTitle(DateFormatter.today(), for: .normal)
         return view
     }()
     
     override func configureView() {
         addSubview(photoImageView)
         addSubview(searchButton)
+        addSubview(dateButton)
+        addSubview(SearchProtocolButton)
     }
     
     override func setConstraints() {
@@ -36,6 +51,17 @@ class AddView: BaseView {
         searchButton.snp.makeConstraints { make in
             make.size.equalTo(50)
             make.bottom.trailing.equalTo(photoImageView)
+        }
+        
+        SearchProtocolButton.snp.makeConstraints { make in
+            make.size.equalTo(50)
+            make.bottom.leading.equalTo(photoImageView)
+        }
+        
+        dateButton.snp.makeConstraints { make in
+            make.top.equalTo(photoImageView.snp.bottom).offset(10)
+            make.horizontalEdges.equalToSuperview()
+            make.height.equalTo(50)
         }
     }
     

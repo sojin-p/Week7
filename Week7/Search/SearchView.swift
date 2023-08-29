@@ -39,7 +39,8 @@ class SearchView: BaseView {
         }
     }
     
-    func collectionViewLayout() -> UICollectionViewFlowLayout {
+    //접근 제어자 private: 다른 화면에서 쓰지 않을거야.
+    private func collectionViewLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 8
         layout.minimumInteritemSpacing = 8

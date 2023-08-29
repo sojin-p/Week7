@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		234BC6B52A9D7BDE0062F776 /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234BC6B42A9D7BDE0062F776 /* Notification+Extension.swift */; };
+		234BC6B72A9D7C780062F776 /* DateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234BC6B62A9D7C780062F776 /* DateView.swift */; };
+		234BC6B92A9D7DB60062F776 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234BC6B82A9D7DB60062F776 /* DateViewController.swift */; };
+		234BC6BB2A9D8E890062F776 /* DateFormat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234BC6BA2A9D8E890062F776 /* DateFormat+Extension.swift */; };
+		234BC6F72A9D9C740062F776 /* SeSACFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 234BC6F32A9D9C300062F776 /* SeSACFramework.framework */; };
+		234BC6F82A9D9C740062F776 /* SeSACFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 234BC6F32A9D9C300062F776 /* SeSACFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2356E5282A9C1D52000DB64F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2356E5272A9C1D52000DB64F /* AppDelegate.swift */; };
 		2356E52A2A9C1D52000DB64F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2356E5292A9C1D52000DB64F /* SceneDelegate.swift */; };
 		2356E52C2A9C1D52000DB64F /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2356E52B2A9C1D52000DB64F /* AddViewController.swift */; };
@@ -22,7 +28,43 @@
 		2356E54E2A9C37EF000DB64F /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2356E54D2A9C37EF000DB64F /* SearchCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		234BC6F22A9D9C300062F776 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 234BC6ED2A9D9C300062F776 /* SeSACFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 234BC6C62A9D92B10062F776;
+			remoteInfo = SeSACFramework;
+		};
+		234BC6F42A9D9C300062F776 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 234BC6ED2A9D9C300062F776 /* SeSACFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 234BC6D02A9D92B10062F776;
+			remoteInfo = SeSACFrameworkTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		234BC6F92A9D9C740062F776 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				234BC6F82A9D9C740062F776 /* SeSACFramework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		234BC6B42A9D7BDE0062F776 /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
+		234BC6B62A9D7C780062F776 /* DateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateView.swift; sourceTree = "<group>"; };
+		234BC6B82A9D7DB60062F776 /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
+		234BC6BA2A9D8E890062F776 /* DateFormat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormat+Extension.swift"; sourceTree = "<group>"; };
+		234BC6ED2A9D9C300062F776 /* SeSACFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SeSACFramework.xcodeproj; path = ../SeSACFramework/SeSACFramework.xcodeproj; sourceTree = "<group>"; };
 		2356E5242A9C1D52000DB64F /* Week7.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Week7.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2356E5272A9C1D52000DB64F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2356E5292A9C1D52000DB64F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,17 +87,45 @@
 			buildActionMask = 2147483647;
 			files = (
 				2356E53D2A9C1E19000DB64F /* SnapKit in Frameworks */,
+				234BC6F72A9D9C740062F776 /* SeSACFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		234BC6B32A9D7BBF0062F776 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				234BC6B42A9D7BDE0062F776 /* Notification+Extension.swift */,
+				234BC6BA2A9D8E890062F776 /* DateFormat+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		234BC6EE2A9D9C300062F776 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				234BC6F32A9D9C300062F776 /* SeSACFramework.framework */,
+				234BC6F52A9D9C300062F776 /* SeSACFrameworkTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		234BC6F62A9D9C740062F776 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2356E51B2A9C1D52000DB64F = {
 			isa = PBXGroup;
 			children = (
+				234BC6ED2A9D9C300062F776 /* SeSACFramework.xcodeproj */,
 				2356E5262A9C1D52000DB64F /* Week7 */,
 				2356E5252A9C1D52000DB64F /* Products */,
+				234BC6F62A9D9C740062F776 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,6 +140,7 @@
 		2356E5262A9C1D52000DB64F /* Week7 */ = {
 			isa = PBXGroup;
 			children = (
+				234BC6B32A9D7BBF0062F776 /* Extension */,
 				2356E5462A9C2FC3000DB64F /* Add */,
 				2356E5412A9C271E000DB64F /* Search */,
 				2356E53E2A9C23E7000DB64F /* Base */,
@@ -107,6 +178,8 @@
 			children = (
 				2356E52B2A9C1D52000DB64F /* AddViewController.swift */,
 				2356E5472A9C2FF1000DB64F /* AddView.swift */,
+				234BC6B62A9D7C780062F776 /* DateView.swift */,
+				234BC6B82A9D7DB60062F776 /* DateViewController.swift */,
 			);
 			path = Add;
 			sourceTree = "<group>";
@@ -121,6 +194,7 @@
 				2356E5202A9C1D52000DB64F /* Sources */,
 				2356E5212A9C1D52000DB64F /* Frameworks */,
 				2356E5222A9C1D52000DB64F /* Resources */,
+				234BC6F92A9D9C740062F776 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -163,12 +237,35 @@
 			);
 			productRefGroup = 2356E5252A9C1D52000DB64F /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 234BC6EE2A9D9C300062F776 /* Products */;
+					ProjectRef = 234BC6ED2A9D9C300062F776 /* SeSACFramework.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				2356E5232A9C1D52000DB64F /* Week7 */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		234BC6F32A9D9C300062F776 /* SeSACFramework.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SeSACFramework.framework;
+			remoteRef = 234BC6F22A9D9C300062F776 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		234BC6F52A9D9C300062F776 /* SeSACFrameworkTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SeSACFrameworkTests.xctest;
+			remoteRef = 234BC6F42A9D9C300062F776 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		2356E5222A9C1D52000DB64F /* Resources */ = {
@@ -187,11 +284,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				234BC6B52A9D7BDE0062F776 /* Notification+Extension.swift in Sources */,
 				2356E5482A9C2FF1000DB64F /* AddView.swift in Sources */,
 				2356E5432A9C274C000DB64F /* SearchViewController.swift in Sources */,
 				2356E54C2A9C365E000DB64F /* BaseCollectionViewCell.swift in Sources */,
+				234BC6BB2A9D8E890062F776 /* DateFormat+Extension.swift in Sources */,
 				2356E52C2A9C1D52000DB64F /* AddViewController.swift in Sources */,
+				234BC6B92A9D7DB60062F776 /* DateViewController.swift in Sources */,
 				2356E54E2A9C37EF000DB64F /* SearchCollectionViewCell.swift in Sources */,
+				234BC6B72A9D7C780062F776 /* DateView.swift in Sources */,
 				2356E5402A9C2424000DB64F /* BaseViewController.swift in Sources */,
 				2356E54A2A9C3371000DB64F /* SearchView.swift in Sources */,
 				2356E5452A9C2EB6000DB64F /* BaseView.swift in Sources */,
