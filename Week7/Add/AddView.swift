@@ -13,6 +13,7 @@ class AddView: BaseView {
         let view = UIImageView()
         view.backgroundColor = .lightGray
         view.contentMode = .scaleAspectFill
+        view.clipsToBounds = true
         return view
     }()
     
@@ -61,7 +62,7 @@ class AddView: BaseView {
     override func setConstraints() {
         photoImageView.snp.makeConstraints { make in
             make.topMargin.leadingMargin.trailingMargin.equalTo(safeAreaLayoutGuide).inset(10)
-            make.height.equalTo(self).multipliedBy(0.3)
+            make.height.equalTo(self).multipliedBy(0.5)
         }
         
         searchButton.snp.makeConstraints { make in

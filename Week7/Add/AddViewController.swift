@@ -17,10 +17,13 @@ protocol PassImageDataDelegate {
     func receiveData(name: String)
 }
 
+//MARK: - AddViewController
 class AddViewController: BaseViewController {
     
     //1.
     let mainView = AddView()
+    
+    let picker = UIImagePickerController()
     
     //2.
     override func loadView() { //viewDidLoad보다 먼저 호출됨, super 메서드 호출 XXX - 이유: 덮어질 수 있음
@@ -29,7 +32,6 @@ class AddViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 //        APIService.shared.callRequst()
         
     }
@@ -48,6 +50,7 @@ class AddViewController: BaseViewController {
         NotificationCenter.default.removeObserver(self, name: .selectImage, object: nil)
     }
     
+    //MARK: - 함수
     @objc func selectImageNotificationObserver(notification: NSNotification) { 
         print("selectImageNotificationObserver")
 //        print(notification.userInfo?["name"])
@@ -104,10 +107,11 @@ class AddViewController: BaseViewController {
         
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let getPhoto = UIAlertAction(title: "갤러리에서 가져오기", style: .default) { action in
-            print("갤러리에서 가져오기")
+            self.getPhoto()
         }
         let searchWeb = UIAlertAction(title: "웹에서 검색하기", style: .default) { action in
-            print("웹에서 검색하기")
+            let vc = SearchViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         
@@ -120,6 +124,19 @@ class AddViewController: BaseViewController {
         
     }
     
+    func getPhoto() {
+        guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else {
+            print("갤러리 사용 불가, 사용자에게 토스트/얼럿") //설정페이지 열어주는 얼럿 등
+            return
+        }
+
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        
+        present(picker, animated: true)
+    }
+    
+    //MARK: - setUI
     override func configureView() { //addSubView
         super.configureView() //부모뷰 것도 호출하기
         mainView.searchButton.addTarget(self, action: #selector(searchButtonClicked), for: .touchUpInside)
@@ -138,6 +155,27 @@ class AddViewController: BaseViewController {
 
 }
 
+//MARK: - ImagePickerDelegate
+extension AddViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    //취소 버튼 클릭 시
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
+    }
+    
+    //사진을 선택하거나 카메라 촬영 직후 호출
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            self.mainView.photoImageView.image = image
+            dismiss(animated: true)
+        }
+        
+    }
+    
+}
+
+//MARK: - Protocol 값 전달 Extension
 //Protocol 값 전달 4-1.
 extension AddViewController: PassDataDelegate {
     
