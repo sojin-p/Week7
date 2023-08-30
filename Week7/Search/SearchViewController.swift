@@ -22,14 +22,10 @@ class SearchViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //addObserver보다 post가 먼저 신호를 보내면 addObserver가 신호를 받지 못한다!!
-//        NotificationCenter.default.addObserver(self, selector: #selector(recommandKeywordNotificationObserver), name: NSNotification.Name("RecommandKeyword"), object: nil)
+        mainView.searchBar.becomeFirstResponder() //키보드 바로 뜨기
+        mainView.searchBar.delegate = self
         
     }
-
-//    @objc func recommandKeywordNotificationObserver(notification: NSNotification) {
-//        print("recommandKeywordNotificationObserver") //안 찍힘. 왜? 포스트가 먼저 실행되기 때문
-//    }
     
     override func configureView() {
         super.configureView()
@@ -39,6 +35,15 @@ class SearchViewController: BaseViewController {
         
     }
 
+}
+
+extension SearchViewController: UISearchBarDelegate {
+    
+    //검색버튼 눌렀을 때
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        mainView.searchBar.resignFirstResponder() //키보드 내리기
+    }
+    
 }
 
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {

@@ -29,9 +29,8 @@ class AddViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //프레임워크 클래스에 접근해보기 1.
-        ClassOpenExample.publicExample()
-        ClassPublicExample.publicExample()
+        
+        APIService.shared.callRequst()
         
     }
     
@@ -40,9 +39,6 @@ class AddViewController: BaseViewController {
         print(#function)
         NotificationCenter.default.addObserver(self, selector: #selector(selectImageNotificationObserver), name: .selectImage, object: nil) //object: 유저인포로 값을 전달하니까 nil
         
-        //프레임워크 메서드에 접근해보기 2.
-//        sesacShowActibityViewController(image: UIImage(systemName: "star")!, url: "hello", text: "hi")
-//        sesacShowAlert(title: <#T##String#>, message: <#T##String#>, buttonTitle: <#T##String#>, buttonAction: <#T##(UIAlertAction) -> Void#>)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -63,9 +59,6 @@ class AddViewController: BaseViewController {
     }
     
     @objc func searchButtonClicked() {
-        //반대로 add->search로 포스트는 불가(addObserver가 먼저 등록되어야 하기 때문)
-//        let word = ["Apple", "Banana", "Cookie", "Cake", "Sky"]
-//        NotificationCenter.default.post(name: NSNotification.Name("RecommandKeyword"), object: nil, userInfo: ["word": word.randomElement()! ])
         
         navigationController?.pushViewController(SearchViewController(), animated: true)
 //        present(SearchViewController(), animated: true)
