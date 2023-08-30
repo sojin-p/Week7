@@ -42,11 +42,11 @@ class SearchView: BaseView {
     //접근 제어자 private: 다른 화면에서 쓰지 않을거야.
     private func collectionViewLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 8
-        layout.minimumInteritemSpacing = 8
-        let size = UIScreen.main.bounds.width - 40 //self.frame.width
+        layout.minimumLineSpacing = 1
+        layout.minimumInteritemSpacing = 1
+        let size = UIScreen.main.bounds.width - 3 //self.frame.width
 //        print(self.frame.width)
-        layout.itemSize = CGSize(width: size / 4, height: size / 4)
+        layout.itemSize = CGSize(width: size / 3, height: size / 3)
         return layout
     }
     

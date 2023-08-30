@@ -19,13 +19,16 @@ class AddView: BaseView {
     
     let searchButton = { //노티피케이션용
         let view = UIButton()
-        view.backgroundColor = .yellow
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 30, weight: .light)
+        let image = UIImage(systemName: "photo.on.rectangle", withConfiguration: imageConfig)
+        view.setImage(image, for: .normal)
+        view.tintColor = .white
         return view
     }()
     
     let SearchProtocolButton = { //프로토콜용
         let view = UIButton()
-        view.backgroundColor = .systemPink
+        view.backgroundColor = .clear
         return view
     }()
     
@@ -61,13 +64,13 @@ class AddView: BaseView {
     
     override func setConstraints() {
         photoImageView.snp.makeConstraints { make in
-            make.topMargin.leadingMargin.trailingMargin.equalTo(safeAreaLayoutGuide).inset(10)
+            make.top.horizontalEdges.equalTo(safeAreaLayoutGuide)
             make.height.equalTo(self).multipliedBy(0.5)
         }
         
         searchButton.snp.makeConstraints { make in
             make.size.equalTo(50)
-            make.bottom.trailing.equalTo(photoImageView)
+            make.bottom.trailing.equalTo(photoImageView).inset(5)
         }
         
         SearchProtocolButton.snp.makeConstraints { make in

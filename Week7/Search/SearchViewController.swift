@@ -30,10 +30,20 @@ class SearchViewController: BaseViewController {
     
     func callRequest(query: String) {
         APIService.shared.callPhotoRequst(query: query) { data in
+            if data.isEmpty {
+                self.showAlert(title: "검색 결과가 없습니다")
+            }
             self.unsplashList.append(contentsOf: data)
             self.mainView.collectionView.reloadData()
             print(self.unsplashList)
         }
+    }
+    
+    func showAlert(title: String) {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(ok)
+        present(alert, animated: true)
     }
     
     override func configureView() {
@@ -51,7 +61,11 @@ extension SearchViewController: UISearchBarDelegate {
     //검색버튼 눌렀을 때
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         unsplashList.removeAll()
-        guard let query = searchBar.text else { return }
+        
+        guard let query = searchBar.text, !query.isEmpty else {
+            showAlert(title: "내용을 입력해주세요")
+            return
+        }
         callRequest(query: query)
         mainView.searchBar.resignFirstResponder() //키보드 내리기
     }
@@ -67,7 +81,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCollectionViewCell", for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
         
-        let url = URL(string: unsplashList[indexPath.item].urls.small)
+        let url = URL(string: unsplashList[indexPath.item].urls.thumb)
         cell.imageView.kf.setImage(with: url)
         
         return cell
