@@ -39,13 +39,6 @@ class SearchViewController: BaseViewController {
         }
     }
     
-    func showAlert(title: String) {
-        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-        let ok = UIAlertAction(title: "확인", style: .default)
-        alert.addAction(ok)
-        present(alert, animated: true)
-    }
-    
     override func configureView() {
         super.configureView()
         
@@ -67,6 +60,7 @@ extension SearchViewController: UISearchBarDelegate {
             return
         }
         callRequest(query: query)
+        searchBar.text = ""
         mainView.searchBar.resignFirstResponder() //키보드 내리기
     }
     

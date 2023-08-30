@@ -158,10 +158,10 @@ struct Tag: Codable {
 
 // MARK: - Source
 struct Source: Codable {
-    let ancestry: Ancestry
-    let title, subtitle, description, metaTitle: String
-    let metaDescription: String
-    let coverPhoto: CoverPhoto
+    let ancestry: Ancestry?
+    let title, subtitle, description, metaTitle: String?
+    let metaDescription: String?
+    let coverPhoto: CoverPhoto?
 
     enum CodingKeys: String, CodingKey {
         case ancestry, title, subtitle, description
@@ -204,7 +204,8 @@ struct CoverPhoto: Codable {
     let currentUserCollections: [JSONAny]
     let sponsorship: JSONNull?
     let topicSubmissions: CoverPhotoTopicSubmissions
-    let premium, plus: Bool
+    let premium: Bool?
+    let plus: Bool?
     let user: User
 
     enum CodingKeys: String, CodingKey {
