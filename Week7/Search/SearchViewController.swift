@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SearchViewController: BaseViewController {
     
     let mainView = SearchView() //제어하게 될 때 인스턴스로 담는 게 접근하기 좋다.
     
     let imageList = ["pencil", "star", "person", "star.fill", "xmark", "person.circle"]
+    var unsplashList: [Photos] = []
     
     var delegate: PassImageDataDelegate?
     
@@ -21,6 +23,12 @@ class SearchViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        APIService.shared.callPhotoRequst { data in
+            self.unsplashList.append(contentsOf: data)
+            self.mainView.collectionView.reloadData()
+            print(self.unsplashList)
+        }
         
         mainView.searchBar.becomeFirstResponder() //키보드 바로 뜨기
         mainView.searchBar.delegate = self
@@ -49,13 +57,16 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imageList.count
+        return unsplashList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCollectionViewCell", for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.imageView.image = UIImage(systemName: imageList[indexPath.item])
+        let url = URL(string: unsplashList[indexPath.item].urls.small)
+        cell.imageView.kf.setImage(with: url)
+//
+//        cell.imageView.image = UIImage(systemName: imageList[indexPath.item])
         
         return cell
     }

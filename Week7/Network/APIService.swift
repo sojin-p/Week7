@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class APIService {
     
@@ -14,20 +15,37 @@ class APIService {
     
     static let shared = APIService() //인스턴스 생성 방지
     
-    func callRequst() {
+//    func callRequst() {
+//
+//        let url = URL(string: "https://apod.nasa.gov/apod/image/2308/M66_JwstTomlinson_3521.jpg")
+//        let request = URLRequest(url: url!)
+//
+//        URLSession.shared.dataTask(with: request) { data, response, error in
+//            print(data)
+//
+//            let value = String(data: data!, encoding: .utf8) //data가 254 bytes로 되어있으니까 뭔지 몰라서.. 일단 눈으로 보고싶으면 스트링으로 변환해서 살펴보기
+//            print(value)
+//
+//            print(response)
+//            print(error)
+//        }.resume()
+//
+//    }
+    
+    func callPhotoRequst(completionHandler: @escaping ([Photos]) -> Void ) {
         
-        let url = URL(string: "https://apod.nasa.gov/apod/image/2308/M66_JwstTomlinson_3521.jpg")
-        let request = URLRequest(url: url!)
+        guard let url = URL(string: "https://api.unsplash.com/search/photos?query=sky&client_id=\(APIKey.unsplashAccessKey)") else { return }
         
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            print(data)
-            
-            let value = String(data: data!, encoding: .utf8) //data가 254 bytes로 되어있으니까 뭔지 몰라서.. 일단 눈으로 보고싶으면 스트링으로 변환해서 살펴보기
-            print(value)
-            
-            print(response)
-            print(error)
-        }.resume()
+        AF.request(url, method: .get).validate(statusCode: 200...500)
+            .responseDecodable(of: SearchPhoto.self){ response in
+            switch response.result {
+            case .success(let value):
+                completionHandler(value.results)
+            case .failure(let error):
+                print(error)
+            }
+        }
+
         
     }
     
