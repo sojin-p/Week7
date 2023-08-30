@@ -14,7 +14,7 @@ protocol PassDataDelegate {
 }
 
 protocol PassImageDataDelegate {
-    func receiveData(name: String)
+    func receiveData(imageURLString: String)
 }
 
 //MARK: - AddViewController
@@ -105,12 +105,17 @@ class AddViewController: BaseViewController {
     func showAlert() {
         
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
         let getPhoto = UIAlertAction(title: "갤러리에서 가져오기", style: .default) { action in
             self.getPhoto()
         }
+        
         let searchWeb = UIAlertAction(title: "웹에서 검색하기", style: .default) { action in
+            
             let vc = SearchViewController()
+            vc.delegate = self
             self.navigationController?.pushViewController(vc, animated: true)
+            
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         
@@ -186,7 +191,9 @@ extension AddViewController: PassDataDelegate {
 }
 
 extension AddViewController: PassImageDataDelegate {
-    func receiveData(name: String) {
-        mainView.photoImageView.image = UIImage(systemName: name)
+    
+    func receiveData(imageURLString: String) {
+        let url = URL(string: imageURLString)
+        mainView.photoImageView.kf.setImage(with: url)
     }
 }

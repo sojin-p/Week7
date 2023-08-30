@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 class SearchViewController: BaseViewController {
     
@@ -70,24 +69,18 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         let url = URL(string: unsplashList[indexPath.item].urls.small)
         cell.imageView.kf.setImage(with: url)
-//
-//        cell.imageView.image = UIImage(systemName: imageList[indexPath.item])
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        print(imageList[indexPath.item])
-        
-        //Notification을 통한 값 전달
-        //NSNotification.Name("SelectImage") 키 같은 것
-        //NotificationCenter.default.post(name: .selectImage, object: nil, userInfo: ["name": imageList[indexPath.item], "sample": "고래밥" ])
+        print(unsplashList[indexPath.item].urls.full)
         
         //Protocol 값 전달
-        delegate?.receiveData(name: imageList[indexPath.item])
+        delegate?.receiveData(imageURLString: unsplashList[indexPath.item].urls.full)
         
-        dismiss(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
 }
