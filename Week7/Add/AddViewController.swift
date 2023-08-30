@@ -30,7 +30,7 @@ class AddViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        APIService.shared.callRequst()
+//        APIService.shared.callRequst()
         
     }
     
@@ -59,9 +59,7 @@ class AddViewController: BaseViewController {
     }
     
     @objc func searchButtonClicked() {
-        
-        navigationController?.pushViewController(SearchViewController(), animated: true)
-//        present(SearchViewController(), animated: true)
+        showAlert()
     }
     
     @objc func dateButtonClicked() {
@@ -100,6 +98,26 @@ class AddViewController: BaseViewController {
             self.mainView.contentButton.setTitle(text, for: .normal)
         }
         present(vc, animated: true)
+    }
+    
+    func showAlert() {
+        
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let getPhoto = UIAlertAction(title: "갤러리에서 가져오기", style: .default) { action in
+            print("갤러리에서 가져오기")
+        }
+        let searchWeb = UIAlertAction(title: "웹에서 검색하기", style: .default) { action in
+            print("웹에서 검색하기")
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        
+        
+        alert.addAction(getPhoto)
+        alert.addAction(searchWeb)
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true)
+        
     }
     
     override func configureView() { //addSubView
