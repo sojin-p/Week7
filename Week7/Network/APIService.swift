@@ -32,9 +32,10 @@ class APIService {
 //
 //    }
     
-    func callPhotoRequst(completionHandler: @escaping ([Photos]) -> Void ) {
+    func callPhotoRequst(query: String, completionHandler: @escaping ([Photos]) -> Void ) {
         
-        guard let url = URL(string: "https://api.unsplash.com/search/photos?query=sky&client_id=\(APIKey.unsplashAccessKey)") else { return }
+        guard let text = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
+        guard let url = URL(string: "https://api.unsplash.com/search/photos?query=\(text)&client_id=\(APIKey.unsplashAccessKey)") else { return }
         
         AF.request(url, method: .get).validate(statusCode: 200...500)
             .responseDecodable(of: SearchPhoto.self){ response in

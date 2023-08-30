@@ -24,15 +24,17 @@ class SearchViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        APIService.shared.callPhotoRequst { data in
+        mainView.searchBar.becomeFirstResponder() //키보드 바로 뜨기
+        mainView.searchBar.delegate = self
+        
+    }
+    
+    func callRequest(query: String) {
+        APIService.shared.callPhotoRequst(query: query) { data in
             self.unsplashList.append(contentsOf: data)
             self.mainView.collectionView.reloadData()
             print(self.unsplashList)
         }
-        
-        mainView.searchBar.becomeFirstResponder() //키보드 바로 뜨기
-        mainView.searchBar.delegate = self
-        
     }
     
     override func configureView() {
@@ -49,6 +51,9 @@ extension SearchViewController: UISearchBarDelegate {
     
     //검색버튼 눌렀을 때
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        unsplashList.removeAll()
+        guard let query = searchBar.text else { return }
+        callRequest(query: query)
         mainView.searchBar.resignFirstResponder() //키보드 내리기
     }
     
