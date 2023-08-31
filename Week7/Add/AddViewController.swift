@@ -104,7 +104,8 @@ class AddViewController: BaseViewController {
         vc.completionHandler = { text in
             self.mainView.contentButton.setTitle(text, for: .normal)
         }
-        present(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
+//        present(vc, animated: true)
     }
     
     func showAlert() {
