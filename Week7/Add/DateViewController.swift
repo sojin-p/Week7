@@ -18,6 +18,10 @@ class DateViewController: BaseViewController {
         self.view = mainView
     }
     
+    deinit {
+        print(self, "사라졌다")
+    }
+    
     //Protocol 값 전달 3-1. 시점 잡기
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)

@@ -35,6 +35,10 @@ class AddViewController: BaseViewController {
 //        APIService.shared.callRequst()
     }
     
+    deinit {
+        print(self, "사라졌다")
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print(#function)
@@ -66,8 +70,9 @@ class AddViewController: BaseViewController {
     
     @objc func dateButtonClicked() {
         //Protocol 값 전달 5. delegate = self 시점...
-        let vc = DateViewController()
-        vc.delegate = self
+        let vc = HomeViewController()
+//        let vc = DateViewController()
+//        vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
     }
     

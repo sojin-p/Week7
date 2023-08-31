@@ -44,7 +44,7 @@ class SearchView: BaseView {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 1
         layout.minimumInteritemSpacing = 1
-        let size = UIScreen.main.bounds.width - 3 //self.frame.width
+        let size = UIScreen.main.bounds.width - 4 //self.frame.width
 //        print(self.frame.width)
         layout.itemSize = CGSize(width: size / 3, height: size / 3)
         return layout

@@ -28,6 +28,10 @@ class SearchViewController: BaseViewController {
         
     }
     
+    deinit {
+        print(self, "사라졌다")
+    }
+    
     func callRequest(query: String) {
         APIService.shared.callPhotoRequst(query: query) { data in
             if data.isEmpty {

@@ -27,6 +27,10 @@ class ContentViewController: BaseViewController {
         
     }
     
+    deinit {
+        print(self, "사라졌다")
+    }
+    
     override func configureView() {
         super.configureView()
         view.addSubview(textView)
