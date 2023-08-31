@@ -143,6 +143,7 @@ class AddViewController: BaseViewController {
         picker.sourceType = .photoLibrary
         
         present(picker, animated: true)
+        
     }
     
     //MARK: - setUI

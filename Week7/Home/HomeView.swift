@@ -9,6 +9,9 @@ import UIKit
 
 class HomeView: BaseView {
     
+    //weak가 없으면 강한 순환참조...
+    weak var delegate: HomeViewProtocol?
+    
     lazy var collectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
         view.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: "SearchCollectionViewCell")
@@ -59,6 +62,8 @@ extension HomeView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(#function)
         //여기에선 화면전환 코드, 얼럿 다 못 띄움... 그것들은 UIVC에 있는거라...
+        //2. 그래서 프로토콜로 값 전달하기!
+        delegate?.didSelectItemAt(indexPath: indexPath)
     }
     
 }
