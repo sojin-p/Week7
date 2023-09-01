@@ -16,8 +16,8 @@ class HomeView: BaseView {
         let view = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
         view.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: "SearchCollectionViewCell")
         //뷰로 올기면서 추가되는 코드!
-        view.dataSource = self
-        view.delegate = self
+//        view.dataSource = self
+//        view.delegate = self
         return view
     }()
     
@@ -44,26 +44,26 @@ class HomeView: BaseView {
 }
 
 
-extension HomeView: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCollectionViewCell", for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
-        
-        cell.imageView.backgroundColor = .cyan
-        
-        return cell
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(#function)
-        //여기에선 화면전환 코드, 얼럿 다 못 띄움... 그것들은 UIVC에 있는거라...
-        //2. 그래서 프로토콜로 값 전달하기!
-        delegate?.didSelectItemAt(indexPath: indexPath)
-    }
-    
-}
+//extension HomeView: UICollectionViewDelegate, UICollectionViewDataSource {
+//    
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return 30
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCollectionViewCell", for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
+//        
+//        cell.imageView.backgroundColor = .cyan
+//        
+//        return cell
+//        
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        print(#function)
+//        //여기에선 화면전환 코드, 얼럿 다 못 띄움... 그것들은 UIVC에 있는거라...
+//        //2. 그래서 프로토콜로 값 전달하기!
+//        delegate?.didSelectItemAt(indexPath: indexPath)
+//    }
+//    
+//}

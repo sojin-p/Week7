@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SeSACFramework
+//import SeSACFramework
 
 //Protocol 값 전달 1. 형태 만들기
 protocol PassDataDelegate {
@@ -32,7 +32,7 @@ class AddViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        APIService.shared.callRequst()
+//        APIService.shared.callRequst(query: "sky")
     }
     
     deinit {
